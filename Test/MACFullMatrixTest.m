@@ -1,13 +1,19 @@
-function MACFullMatrixTest
+ffunction MACFullMatrixTest
 rootpath = startupTest;
 
-dtau = 0.15;
+P = Parameters;
 
-[X,u_num] = EigenFunction(dtau);
-u_ext = EigenFunctionSectionBarExact(X);
+dTau = P.dTau;
+xinf = P.xinf;
+index = 2;
+
+[X,u_num] =  EigenFunction_num(dTau(index));
+u_ext = EigenFunctionSectionBarExact(xinf(index));
+
 mac = MAC(u_num, u_ext);   
+% mac = MAC(u_num, u_exscale);   
 
-save 'MATFullMatrix.mat' mac dtau;
+save 'MATFullMatrix.mat' mac dTau(index);
 
 stopdown(rootpath);
 end
