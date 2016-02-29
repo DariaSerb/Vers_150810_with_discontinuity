@@ -1,4 +1,4 @@
-function mac = MAC(u,v)
+ function mac = MAC(u,v)
 [Mu,Nu] = size(u);
 [Mv,Nv] = size(v);
 
@@ -13,9 +13,9 @@ M = Mv;
 mac = zeros(M,M);
 for n = 1:M
     for m = 1:M
-        mac(n,m) = (u(n,:) * v(m,:)')^2 /((u(n,:) * u(n,:)') * (v(m,:) * v(m,:)'));
+        mac(n,m) = sqrt((u(n,:) * v(m,:)')^2 /((u(n,:) * u(n,:)') * (v(m,:) * v(m,:)')));
     end
 end
 
-% mac = log(mac);
+mac = log10(mac);
 end
