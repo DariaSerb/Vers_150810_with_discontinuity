@@ -1,9 +1,10 @@
 function NumericalEigenFunctionTest
-% test for numerical calculation of eigen function
+% test for numerical calculation of eigenfunction
 rootpath = startupTest;
 
-dTau = 0.05;
-[X,u] = EigenFunction(dTau);
+dTau = 0.01;
+% [X,u] = EigenFunction(dTau);
+[X,u] = EigenFunction_num(dTau);
 
 figure(1);
 plot(X, u);
