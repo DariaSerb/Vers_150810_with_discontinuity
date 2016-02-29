@@ -11,7 +11,7 @@ end
 
 function [q, qs] = q_calc_scalar(x)
 
-x0 = 0.98540;
+x0 = 1.2;
 delta = 0.3;
 eta = 0.6;
 % parameters of graphic q-function
