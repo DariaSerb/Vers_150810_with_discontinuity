@@ -3,15 +3,15 @@ classdef Parameters
     properties
         L = 2;
         R1 = 0.02;
-        R2 = 0.01;
+        R2 = 0.016;
         E = 2.06e11;
-        ro = 7850;
+        ro = 7860;
         ModeCnt = 16;
         ModeEst = 3;
         PointCnt = 200;
 %       Pointdisc = 401;
         Pointdisc = 1;
-                xc = 0.9854;
+                xc = 1.2;
         T = 10;
     end
     methods
