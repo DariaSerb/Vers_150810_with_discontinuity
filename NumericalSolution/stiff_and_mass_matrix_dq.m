@@ -1,17 +1,24 @@
-function [Pdq, Kdq] = stiff_and_mass_matrix_dq(xle,phi1,phi2,A11d,A21d,A12d,A22d)
+function [Pdq, Kdq] = stiff_and_mass_matrix_dq(xn,xle,phi1,phi2,A11d,A21d,A12d,A22d)
 
 % definition size of mass matrix and stiffness matrix
 xmatrixmassdq = zeros(4,4);
 xmatrixkdq = zeros(4,4);
-npg=5;
+
+npg = 5;
+
+q = zeros(npg,1); 
+qs = zeros(npg,1); 
+
 [x,w] = cal_point_gauss(npg);
 d = abs(phi1);
 % numerical integration (0 - d)
 for ig = 1:npg
     s = (d/2)*(x(ig)+1);
+    s1 = s + xn(1);
+    
     N2 = s/xle;
-    N1 = 1-N2;
-    [q,qs] = q_calc(s);
+    N1 = 1 - N2;
+    [q(ig),qs(ig)] = q_calc(s1);
     
     F2 = calculation_f2(xle,phi1,phi2,s);
     N = [N1, N2, N1*F2, N2*F2];
@@ -36,12 +43,17 @@ end
     xmatrixmassdq = zeros(4,4);
     xmatrixkdq = zeros(4,4);
     
+    q = zeros(npg,1); 
+    qs = zeros(npg,1); 
+    
  % numerical integration (d - xle)
 for ig = 1:npg
-    s =((xle-d)/2)*(x(ig)+1)+d;
+    s = ((xle-d)/2)*(x(ig)+1)+d;
+    s1 = s + xn(1);
+    
     N2 = s/xle;
     N1 = 1-N2;
-    [q,qs] = q_calc(s);
+    [q(ig),qs(ig)] = q_calc(s1);
     
     F2 = calculation_f2(xle,phi1,phi2,s);
     N = [N1, N2, N1*F2, N2*F2];
