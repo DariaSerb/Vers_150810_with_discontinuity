@@ -1,4 +1,4 @@
-ffunction [P0dq, K0dq] = stiff_mass_element_matrix_dq(xn,xle,A1,A2)
+function [P0dq, K0dq] = stiff_mass_element_matrix_dq(xn,xle,A1,A2)
 
 % definition size of mass matrix and stiffness matrix
 xmatrixmassdq = zeros(2,2);
