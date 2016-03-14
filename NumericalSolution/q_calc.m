@@ -36,14 +36,14 @@ end;
 if (x < x2)&&(x > x1)
     [f, fs] = func((x-x1)/(x2-x1));
     q = f;
-    qs = (1/(x2-x1))*fs; 
+    qs = (1/(x2-x1))*fs;
     return;
 end;
 
 if (x < x4)&&(x > x3)
     [f, fs] = func(1 - (x-x3)/(x4-x3));
     q = f;
-    qs = - (1/(x4-x3))*fs; 
+    qs = - (1/(x4-x3))*fs;
     return;
 end;
 
@@ -64,21 +64,16 @@ end
  function coef = solv_slaeq(xx1,xx2,qq1,qq2,N)
 %SOLV_SLAEQ 
 % the physical definition of coefficients of linear algebratic equations system 
-A = zeros(N,N);
-D = zeros(N,1);
-for j=1:N
-  A(1,j) = hermite(j-1,xx1);
-  A(2,j) = hermite(j-1,xx2); 
-  A(3,j) = diffH(j-1,xx1); 
-  A(4,j) = diffH(j-1,xx2); 
+    A = zeros(N,N);
+    for j=1:N
+        A(1,j) = hermite(j-1,xx1);
+        A(2,j) = hermite(j-1,xx2); 
+        A(3,j) = diffH(j-1,xx1); 
+        A(4,j) = diffH(j-1,xx2); 
+    end
+        B = [qq1;qq2;0;0];
+    coef = linsolve(A,B);
 end
-  B = [qq1;qq2;0;0];
-  D = linsolve(A,B);
-  coef = zeros(N,1);
- for n=1:N
-   coef(n) = D(n);
- end
- end
 
 function H = hermite(n,x)
 %polinome d'Hermite
