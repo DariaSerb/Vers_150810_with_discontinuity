@@ -1,17 +1,17 @@
 classdef Parameters
 % system parameteters value
     properties
-        L         = 2;
-        R1        = 0.02;
-        R2        = 0.016;
-        E         = 2.06e11;
-        ro        = 7860;
-        ModeCnt   = 20;
-        ModeEst   = 3;
-        PointCnt  = 200;
+        L       = 2;
+        R1      = 0.02;
+        R2      = 0.016;
+        E       = 2.06e11;
+        ro      = 7860;
+        ModeCnt = 20;
+        ModeEst = 3;
+        PointCnt  = 201;
         Pointdisc = 129;
-        xc        = 1.2;
-        dTaumax   = 0.32;
+        xc      = 0.9000;
+        dTaumax = 0.4;
     end
     
     methods
